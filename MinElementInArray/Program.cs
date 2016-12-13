@@ -22,17 +22,33 @@ namespace MinElementInArray
 
             while(true)
             {
-                firstIndex++;
-
                 averageIndex = firstIndex + (lastIndex - firstIndex) / 2; // меняем индекс среднего значения
 
-                if (a[firstIndex]<a[averageIndex])
+                if (a[firstIndex] < a[averageIndex])
                 {
-                    if (a[averageIndex+1]<a[lastIndex])
+                    if (!(a[averageIndex + 1] < a[lastIndex]))
+                    {
+                        if (averageIndex + 1 == lastIndex)
+                        {
+                            searchValue = a[lastIndex];
+                            break;
+                        }
+                        firstIndex = averageIndex + 1;
+                    }
+                    else
                     {
                         searchValue = a[averageIndex + 1];
                         break;
                     }
+                }
+                else
+                {
+                    if (averageIndex + 1 == lastIndex)
+                    {
+                        searchValue = a[lastIndex];
+                        break;
+                    }
+                    lastIndex = averageIndex;
                 }
             }
 
